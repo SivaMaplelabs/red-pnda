@@ -18,7 +18,7 @@ BLOOMFILTER=${BLOOMFILTER-'ROW'}
 # LZO requires lzo2 64bit to be installed + the hadoop-gpl-compression jar.
 COMPRESSION=${COMPRESSION-'NONE'}
 # All compression codec names are upper case (NONE, LZO, SNAPPY, etc).
-COMPRESSION=`echo "$COMPRESSION" | tr a-z A-Z`
+COMPRESSION=$(echo "$COMPRESSION" | tr a-z A-Z)
 
 case $COMPRESSION in
   (NONE|LZO|GZIP|SNAPPY)  :;;  # Known good.
@@ -27,7 +27,7 @@ case $COMPRESSION in
     ;;
 esac
 
-# HBase scripts also use a variable named `HBASE_HOME', and having this
+# HBase scripts also use a variable named 'HBASE_HOME', and having this
 # variable in the environment with a value somewhat different from what
 # they expect can confuse them in some cases.  So rename the variable.
 hbh=$HBASE_HOME
